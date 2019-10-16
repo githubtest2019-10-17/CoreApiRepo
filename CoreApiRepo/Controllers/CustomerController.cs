@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreApiRepo.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreApiRepo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    // Add Required Methods in the Controller for Implemeting the CustomerRepository methods
+    // Please Get CustomerRepository in constructor using Dependency injection
+    public class CustomerController : ControllerBase
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<Response> GetCustomers()
         {
-            return new string[] { "value1", "value2" };
+            return new Response();
         }
 
         // GET api/values/5
@@ -26,20 +29,10 @@ namespace CoreApiRepo.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Response> Post([FromBody] Customer value)
         {
+            return new Response();
         }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
